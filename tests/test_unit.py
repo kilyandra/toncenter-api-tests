@@ -1,5 +1,5 @@
 import httpx
-from src.client import check_address_state
+from src.client import get_address_state
 
 
 def test_get_address_state_frozen(monkeypatch):
@@ -14,5 +14,5 @@ def test_get_address_state_frozen(monkeypatch):
 
     monkeypatch.setattr(httpx, "get", mock_get)
 
-    result = check_address_state("mock_frozen_address")
+    result = get_address_state("mock_frozen_address")
     assert result == "frozen"
