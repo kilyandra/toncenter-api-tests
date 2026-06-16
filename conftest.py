@@ -7,7 +7,7 @@ def active_address():
 
 @pytest.fixture
 def uninitialized_address():
-    return "EQD-IS_-dhjmD0r8q-1H4xtpBJK_d-LoLxkNxXOTCIeGSRIz"
+    return "UQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJKZ"
 
 @pytest.fixture
 def invalid_address():
