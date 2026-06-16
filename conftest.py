@@ -32,7 +32,7 @@ def testnet_address():
 
 
 @pytest.fixture
-def nonbounceable_address(active_address):
+def nonbounceable_address():
     return NON_BOUNCEABLE_ADDRESS
 
 @pytest.fixture

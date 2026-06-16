@@ -22,6 +22,7 @@ def test_detect_address_testnet(testnet_address):
     r = detect_address(testnet_address)
     assert r.test_only is True
 
+
 def test_get_address_state_active(active_address):
     assert get_address_state(active_address) == "active"
 

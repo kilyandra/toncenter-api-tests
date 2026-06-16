@@ -23,3 +23,4 @@ Then install dependencies and run:
 ## Test Coverage
 - `getAddressState` — active, uninitialized, frozen (mocked), invalid input
 - `detectAddress` — raw, bounceable, non-bounceable, testnet, invalid input
+- wip...

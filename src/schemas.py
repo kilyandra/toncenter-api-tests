@@ -8,8 +8,6 @@ class APIError(BaseModel):
     code: int
 
 
-#/detectAddress
-
 class BounceableVariant(BaseModel):
     b64: str
     b64url: str
@@ -64,8 +62,6 @@ class DetectAddressResponse(BaseModel):
     ok: bool
     result: DetectAddressResult
 
-
-#/getAddressState
 
 class AddressStateResponse(BaseModel):
     ok: bool
