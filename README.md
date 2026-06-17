@@ -23,5 +23,6 @@ Then install dependencies and run:
 ## Test Coverage
 - `detectAddress` — raw, bounceable, non-bounceable, testnet, invalid input
 - `detectHash` — b64, b64url, hex, invalid input
-- `getAddressState` — active, uninitialized, frozen (mocked), invalid input
+- `packAddress` — friendly, raw, invalid input
+- `unpackAddress` — friendly, raw, invalid input
 - wip...

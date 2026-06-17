@@ -1,7 +1,7 @@
 from pydantic import BaseModel
 
 
-class APIError(BaseModel):
+class APIErrorResponse(BaseModel):
     ok: bool
     error: str
     code: int

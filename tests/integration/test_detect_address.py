@@ -1,7 +1,9 @@
 import pytest
-from src.client import detect_address
 from tonsdk.utils import Address
+from src.client import detect_address
+from src.exceptions import APIRequestError
 from tests.conftest import ADDRESS_RAW, ADDRESS_BOUNCEABLE, ADDRESS_NON_BOUNCEABLE
+
 
 
 @pytest.mark.parametrize("address, given_type", [
@@ -23,5 +25,8 @@ def test_detect_address_testnet(address_testnet):
     assert r.test_only is True
 
 def test_detect_address_invalid(address_invalid):
-    with pytest.raises(ValueError):
+    with pytest.raises(APIRequestError) as exc:
         detect_address(address_invalid)
+
+    assert exc.value.status_code == 422
+    assert exc.value.api_code == 422
