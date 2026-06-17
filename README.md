@@ -21,6 +21,7 @@ Then install dependencies and run:
 - **Unit tests** cover scenarios that can't be reproduced via the live API (e.g. frozen accounts) using mocks
 
 ## Test Coverage
-- `getAddressState` — active, uninitialized, frozen (mocked), invalid input
 - `detectAddress` — raw, bounceable, non-bounceable, testnet, invalid input
+- `detectHash` — b64, b64url, hex, invalid input
+- `getAddressState` — active, uninitialized, frozen (mocked), invalid input
 - wip...

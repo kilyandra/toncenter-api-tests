@@ -2,12 +2,12 @@ import pytest
 from src.client import get_address_state
 
 
-def test_get_address_state_active(active_address):
-    assert get_address_state(active_address) == "active"
+def test_get_address_state_active(address_active):
+    assert get_address_state(address_active) == "active"
 
-def test_get_address_state_uninitialized(uninitialized_address):
-    assert get_address_state(uninitialized_address) == "uninitialized"
+def test_get_address_state_uninitialized(address_uninitialized):
+    assert get_address_state(address_uninitialized) == "uninitialized"
 
-def test_get_address_state_invalid_address(invalid_address):
+def test_get_address_state_invalid_address(address_invalid):
     with pytest.raises(ValueError):
-        get_address_state(invalid_address)
+        get_address_state(address_invalid)
