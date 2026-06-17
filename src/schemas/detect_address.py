@@ -2,12 +2,6 @@ from pydantic import BaseModel, field_validator
 from tonsdk.utils import Address
 
 
-class APIError(BaseModel):
-    ok: bool
-    error: str
-    code: int
-
-
 class BounceableVariant(BaseModel):
     b64: str
     b64url: str
@@ -61,8 +55,3 @@ class DetectAddressResult(BaseModel):
 class DetectAddressResponse(BaseModel):
     ok: bool
     result: DetectAddressResult
-
-
-class AddressStateResponse(BaseModel):
-    ok: bool
-    result: str

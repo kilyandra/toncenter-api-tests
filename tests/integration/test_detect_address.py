@@ -1,7 +1,7 @@
 import pytest
-from src.client import get_address_state, detect_address
+from src.client import detect_address
 from tonsdk.utils import Address
-from conftest import RAW_ADDRESS, BOUNCEABLE_ADDRESS, NON_BOUNCEABLE_ADDRESS
+from tests.conftest import RAW_ADDRESS, BOUNCEABLE_ADDRESS, NON_BOUNCEABLE_ADDRESS
 
 
 @pytest.mark.parametrize("address, given_type", [
@@ -22,13 +22,6 @@ def test_detect_address_testnet(testnet_address):
     r = detect_address(testnet_address)
     assert r.test_only is True
 
-
-def test_get_address_state_active(active_address):
-    assert get_address_state(active_address) == "active"
-
-def test_get_address_state_uninitialized(uninitialized_address):
-    assert get_address_state(uninitialized_address) == "uninitialized"
-
-def test_get_address_state_invalid_address(invalid_address):
+def test_detect_address_invalid(invalid_address):
     with pytest.raises(ValueError):
-        get_address_state(invalid_address)
+        detect_address(invalid_address)
