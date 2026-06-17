@@ -1,6 +1,8 @@
 import httpx, os
 from dotenv import load_dotenv
-from src.schemas import APIError, AddressStateResponse, DetectAddressResponse, DetectHashResponse
+from src.exceptions import APIRequestError
+from src.schemas import (APIErrorResponse, AddressStateResponse, DetectAddressResponse,
+                         DetectHashResponse, PackAddressResponse, UnpackAddressResponse)
 
 BASE_URL = "https://toncenter.com/api/v2"
 
@@ -19,12 +21,9 @@ def make_request(endpoint, params):
     if r['ok'] is True:
         return r
     else:
-        error = APIError.model_validate(r)
-        raise ValueError(f"{error.code}: {error.error}")
+        error = APIErrorResponse.model_validate(r)
+        raise APIRequestError(req.status_code, error.code, error.error)
 
-def get_address_state(address):
-    r = make_request("/getAddressState", {"address": address})
-    return AddressStateResponse.model_validate(r).result
 
 def detect_address(address):
     r = make_request("/detectAddress", {"address": address})
@@ -33,3 +32,16 @@ def detect_address(address):
 def detect_hash(_hash):
     r = make_request("/detectHash", {"hash": _hash})
     return DetectHashResponse.model_validate(r).result
+
+def pack_address(address):
+    r = make_request("/packAddress", {"address": address})
+    return PackAddressResponse.model_validate(r).result
+
+def unpack_address(address):
+    r = make_request("/unpackAddress", {"address": address})
+    return UnpackAddressResponse.model_validate(r).result
+
+
+def get_address_state(address):
+    r = make_request("/getAddressState", {"address": address})
+    return AddressStateResponse.model_validate(r).result
